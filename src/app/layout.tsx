@@ -1,38 +1,31 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Fraunces, Outfit } from "next/font/google";
+import { profile } from "@/data/cv";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
-const manrope = Manrope({
-  variable: "--font-sans",
+const body = Outfit({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Erdem Ozkorkmaz — Ingénieur logiciel",
-  description:
-    "Ingénieur logiciel à Paris. Développement web, cloud, Infrastructure as Code et pilotage de projet.",
-  openGraph: {
-    title: "Erdem Ozkorkmaz — Ingénieur logiciel",
-    description:
-      "Développement web, cloud et Infrastructure as Code. Paris.",
-    locale: "fr_FR",
-    type: "website",
-  },
+  title: `${profile.name} — ${profile.title}`,
+  description: profile.summary,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-bg font-sans text-ink">{children}</body>
+      <body className="min-h-full flex flex-col bg-atmosphere">{children}</body>
     </html>
   );
 }

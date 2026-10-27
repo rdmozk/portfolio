@@ -1,10 +1,13 @@
-# Portfolio — Erdem Ozkorkmaz
+# Erdem Ozkorkmaz — Portfolio / CV
 
-Site portfolio personnel (Next.js + TypeScript + Tailwind).
+Site CV personnel d’Erdem Ozkorkmaz, ingénieur logiciel à Paris.
 
-**Prod (GitHub Pages)** : https://rdmozk.github.io/portfolio/
+## Stack
 
-## Dev
+- Next.js (App Router) + TypeScript + Tailwind CSS
+- Contenu centralisé dans `src/data/cv.ts`
+
+## Démarrage
 
 ```bash
 npm install
@@ -13,15 +16,11 @@ npm run dev
 
 Ouvre [http://localhost:3000](http://localhost:3000).
 
-## Build local / GitHub Pages
+## Export PDF
 
-```bash
-npm run build          # export statique (sans basePath)
-npm run build:pages    # export avec basePath /portfolio
-```
+Utilise le bouton **PDF** dans l’en-tête (impression navigateur).
 
-Chaque push sur `main` déploie via `.github/workflows/deploy-pages.yml`.
+## Liens
 
-## Contenu
-
-Édite `src/data/cv.ts` pour mettre à jour le contenu.
+- [LinkedIn](https://www.linkedin.com/in/erdem-ozkorkmaz-879934193)
+- [GitHub](https://github.com/rdmozk)

@@ -1,129 +1,226 @@
 import { SiteHeader } from "@/components/SiteHeader";
-import { languages, profile, skills } from "@/data/cv";
+import {
+  education,
+  experience,
+  languages,
+  profile,
+  projects,
+  skills,
+} from "@/data/cv";
 
 export default function Home() {
   return (
-    <div id="top" className="flex min-h-full flex-col">
+    <>
       <SiteHeader />
-
-      <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16 md:py-24">
-        <section className="border-b border-line pb-14">
-          <p className="text-[13px] text-ink-muted">{profile.location}</p>
-          <h1 className="display mt-3 text-[clamp(2.4rem,6vw,3.4rem)] font-medium leading-[1.1] text-ink">
+      <main id="top" className="relative z-10 mx-auto w-full max-w-5xl flex-1 px-6 pb-24">
+        {/* Hero */}
+        <section className="flex min-h-[72vh] flex-col justify-center gap-8 py-16 sm:py-24">
+          <p className="animate-rise text-[13px] uppercase tracking-[0.22em] text-accent">
+            {profile.location}
+          </p>
+          <h1 className="animate-rise-delay-1 font-[family-name:var(--font-display)] text-[clamp(2.75rem,8vw,5.5rem)] font-medium leading-[0.95] tracking-tight text-ink">
             {profile.name}
           </h1>
-          <p className="mt-3 text-[18px] text-ink-muted">{profile.title}</p>
-          <p className="mt-8 max-w-xl text-[16px] leading-relaxed text-ink-muted">
+          <p className="animate-rise-delay-2 max-w-xl text-xl text-ink-muted sm:text-2xl">
+            {profile.title}
+          </p>
+          <p className="animate-rise-delay-3 max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
             {profile.summary}
           </p>
-          <p className="mt-6 text-[14px]">
+          <div className="animate-rise-delay-3 no-print flex flex-wrap gap-3 pt-2">
             <a
-              href={`mailto:${profile.email}`}
-              className="underline decoration-line underline-offset-4 hover:decoration-ink"
+              href="#contact"
+              className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-bg transition hover:brightness-110"
             >
-              {profile.email}
+              Me contacter
             </a>
-            <span className="mx-2 text-ink-muted">·</span>
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-line underline-offset-4 hover:decoration-ink"
+              className="rounded-full border border-line px-5 py-2.5 text-sm text-ink-muted transition hover:border-accent hover:text-accent"
             >
               LinkedIn
             </a>
-            <span className="mx-2 text-ink-muted">·</span>
             <a
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-line underline-offset-4 hover:decoration-ink"
+              className="rounded-full border border-line px-5 py-2.5 text-sm text-ink-muted transition hover:border-accent hover:text-accent"
             >
               GitHub
             </a>
-          </p>
+          </div>
         </section>
 
-        <section id="competences" className="border-b border-line py-14">
-          <h2 className="text-[13px] font-medium uppercase tracking-[0.12em] text-ink-muted">
-            Compétences
-          </h2>
-
-          <div className="mt-8 grid gap-10 sm:grid-cols-2">
-            {(
-              [
-                ["Web", skills.web],
-                ["Backend", skills.backend],
-                ["Cloud & infra", skills.cloudInfra],
-                ["Autres", skills.autres],
-              ] as const
-            ).map(([label, items]) => (
-              <div key={label}>
-                <h3 className="text-[15px] font-medium text-ink">{label}</h3>
-                <ul className="mt-3 space-y-1.5 text-[14px] text-ink-muted">
-                  {items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+        {/* Experience */}
+        <Section id="experience" title="Expérience">
+          <ol className="space-y-10">
+            {experience.map((job) => (
+              <li key={`${job.company}-${job.role}-${job.start}`} className="grid gap-3 sm:grid-cols-[9rem_1fr]">
+                <p className="text-sm text-ink-muted">
+                  {job.start} — {job.end}
+                </p>
+                <div>
+                  <h3 className="text-lg font-medium text-ink">{job.role}</h3>
+                  <p className="text-accent">
+                    {job.company}
+                    <span className="text-ink-muted"> · {job.location}</span>
+                  </p>
+                  <ul className="mt-3 space-y-1.5 text-[15px] leading-relaxed text-ink-muted">
+                    {job.bullets.map((bullet) => (
+                      <li key={bullet} className="flex gap-2">
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
+        </Section>
 
+        {/* Education */}
+        <Section id="formation" title="Formation">
+          <ol className="space-y-8">
+            {education.map((edu) => (
+              <li key={edu.school + edu.degree} className="grid gap-2 sm:grid-cols-[9rem_1fr]">
+                <p className="text-sm text-ink-muted">
+                  {edu.start} — {edu.end}
+                </p>
+                <div>
+                  <h3 className="text-lg font-medium text-ink">{edu.degree}</h3>
+                  <p className="text-ink-muted">
+                    {edu.school} · {edu.location}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </Section>
+
+        {/* Projects */}
+        <Section id="projets" title="Projets">
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <li
+                key={project.name}
+                className="rounded-2xl border border-line bg-bg-elevated/60 p-5 transition hover:border-accent/40"
+              >
+                <h3 className="font-[family-name:var(--font-display)] text-xl text-ink">
+                  {project.name}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  {project.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full bg-accent-soft px-2.5 py-0.5 text-[11px] text-accent"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        {/* Skills */}
+        <Section id="competences" title="Compétences">
+          <div className="grid gap-8 sm:grid-cols-3">
+            <SkillGroup title="Web" items={[...skills.web]} />
+            <SkillGroup title="Backend" items={[...skills.backend]} />
+            <SkillGroup title="Cloud & outils" items={[...skills.cloudInfra]} />
+          </div>
           <div className="mt-10">
-            <h3 className="text-[15px] font-medium text-ink">Langues</h3>
-            <ul className="mt-3 space-y-1.5 text-[14px] text-ink-muted">
+            <h3 className="mb-3 text-sm uppercase tracking-[0.16em] text-ink-muted">
+              Langues
+            </h3>
+            <ul className="flex flex-wrap gap-4 text-[15px]">
               {languages.map((lang) => (
-                <li key={lang.name}>
-                  {lang.name} — {lang.level}
+                <li key={lang.name} className="text-ink">
+                  {lang.name}
+                  <span className="text-ink-muted"> — {lang.level}</span>
                 </li>
               ))}
             </ul>
           </div>
-        </section>
+        </Section>
 
-        <section id="contact" className="py-14">
-          <h2 className="text-[13px] font-medium uppercase tracking-[0.12em] text-ink-muted">
-            Contact
-          </h2>
-          <p className="mt-6 max-w-md text-[16px] leading-relaxed text-ink-muted">
-            Pour un échange autour d’un besoin web, cloud ou infra :
-          </p>
-          <ul className="mt-6 space-y-2 text-[15px]">
-            <li>
-              <a
-                href={`mailto:${profile.email}`}
-                className="underline decoration-line underline-offset-4 hover:decoration-ink"
-              >
-                {profile.email}
-              </a>
-            </li>
-            <li>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-line underline-offset-4 hover:decoration-ink"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-line underline-offset-4 hover:decoration-ink"
-              >
-                GitHub
-              </a>
-            </li>
-          </ul>
-        </section>
+        {/* Contact */}
+        <Section id="contact" title="Contact">
+          <div className="flex flex-col gap-3 text-[15px] sm:flex-row sm:flex-wrap sm:gap-8">
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-ink transition hover:text-accent"
+            >
+              {profile.email}
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-muted transition hover:text-accent"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-muted transition hover:text-accent"
+            >
+              GitHub
+            </a>
+          </div>
+        </Section>
       </main>
-
-      <footer className="no-print border-t border-line px-6 py-6 text-[12px] text-ink-muted">
-        <div className="mx-auto max-w-3xl">© 2026 {profile.name}</div>
+      <footer className="no-print relative z-10 border-t border-line py-8 text-center text-sm text-ink-muted">
+        © 2026 {profile.name}
       </footer>
+    </>
+  );
+}
+
+function Section({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="scroll-mt-24 border-t border-line py-16">
+      <h2 className="mb-10 font-[family-name:var(--font-display)] text-3xl tracking-tight text-ink sm:text-4xl">
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
+
+function SkillGroup({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div>
+      <h3 className="mb-3 text-sm uppercase tracking-[0.16em] text-ink-muted">
+        {title}
+      </h3>
+      <ul className="flex flex-wrap gap-2">
+        {items.map((item) => (
+          <li
+            key={item}
+            className="rounded-full border border-line px-3 py-1 text-sm text-ink"
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
