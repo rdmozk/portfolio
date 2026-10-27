@@ -5,23 +5,22 @@ import "./globals.css";
 const fraunces = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
 });
 
 const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Erdem Ozkorkmaz — Des systèmes qui tiennent",
+  title: "Erdem Ozkorkmaz — Ingénieur logiciel",
   description:
-    "Ingénieur logiciel à Paris. Web, cloud, Infrastructure as Code et pilotage — fiabilité d’abord.",
+    "Ingénieur logiciel à Paris. Développement web, cloud, Infrastructure as Code et pilotage de projet.",
   openGraph: {
-    title: "Erdem Ozkorkmaz — Des systèmes qui tiennent",
+    title: "Erdem Ozkorkmaz — Ingénieur logiciel",
     description:
-      "Web, cloud, IaC et pilotage de projet. Des solutions faites pour la production.",
+      "Développement web, cloud et Infrastructure as Code. Paris.",
     locale: "fr_FR",
     type: "website",
   },
