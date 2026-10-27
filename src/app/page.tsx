@@ -1,12 +1,23 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import {
-  education,
-  experiences,
+  aboutBlocks,
+  focusAreas,
   languages,
   profile,
-  projects,
+  reliabilitySignals,
   skills,
 } from "@/data/cv";
+
+function SectionLabel({ index, title }: { index: string; title: string }) {
+  return (
+    <div className="flex items-baseline gap-3">
+      <span className="label text-accent">{index}</span>
+      <h2 className="display text-3xl font-medium tracking-tight text-ink md:text-[2.15rem]">
+        {title}
+      </h2>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -14,169 +25,111 @@ export default function Home() {
       <SiteHeader />
 
       <main className="flex-1">
-        <section className="relative isolate min-h-[92vh] overflow-hidden border-b border-line">
-          <div
-            aria-hidden
-            className="mesh pointer-events-none absolute inset-0 -z-10"
-            style={{
-              background: `
-                radial-gradient(ellipse 70% 55% at 12% 20%, var(--glow-a), transparent 60%),
-                radial-gradient(ellipse 55% 45% at 88% 10%, var(--glow-b), transparent 55%),
-                radial-gradient(ellipse 40% 35% at 70% 80%, var(--glow-a), transparent 50%),
-                linear-gradient(165deg, #e8ecef 0%, #dde3e8 45%, #d5ddd8 100%)
-              `,
-            }}
-          />
+        <section className="relative isolate overflow-hidden border-b border-line">
+          <div className="hero-glow" aria-hidden />
 
-          <div className="mx-auto flex min-h-[92vh] max-w-6xl flex-col justify-end px-6 pb-16 pt-28 md:pb-24 md:pt-32">
-            <p className="animate-rise text-sm font-medium uppercase tracking-[0.22em] text-accent">
-              {profile.location}
+          <div className="relative mx-auto flex min-h-[92vh] max-w-5xl flex-col justify-end px-6 pb-20 pt-28 md:px-10 md:pb-24">
+            <p className="animate-rise label flex items-center gap-2 text-ok">
+              <span className="status-dot" aria-hidden />
+              Système prêt
             </p>
-            <h1 className="animate-rise animate-rise-delay-1 mt-4 max-w-4xl font-[family-name:var(--font-syne)] text-5xl font-semibold leading-[0.95] tracking-tight text-ink sm:text-7xl md:text-8xl">
-              {profile.name}
+
+            <h1 className="display animate-rise animate-rise-delay-1 mt-7 max-w-4xl text-[clamp(3rem,9vw,5.6rem)] font-medium italic leading-[0.95] text-ink">
+              {profile.heroClaim}
             </h1>
-            <p className="animate-rise animate-rise-delay-2 mt-6 max-w-xl text-xl text-ink-muted md:text-2xl">
-              {profile.title}. Cloud, full-stack, produits web.
+
+            <p className="animate-rise animate-rise-delay-2 mt-8 text-[clamp(1.2rem,2.5vw,1.55rem)] font-semibold tracking-tight text-ink">
+              {profile.name}
+              <span className="mx-2 font-normal text-ink-muted">—</span>
+              <span className="font-medium text-accent">{profile.title}</span>
             </p>
-            <p className="animate-rise animate-rise-delay-2 mt-4 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
+
+            <p className="animate-rise animate-rise-delay-2 mt-2 text-[14px] font-medium tracking-wide text-ink-muted">
+              {profile.heroLine}
+            </p>
+
+            <p className="animate-rise animate-rise-delay-3 mt-7 max-w-2xl text-[17px] leading-relaxed text-ink-muted md:text-[18px]">
               {profile.summary}
             </p>
-            <div className="animate-rise animate-rise-delay-3 mt-10 flex flex-wrap gap-3">
+
+            <dl className="animate-rise animate-rise-delay-3 mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
+              {reliabilitySignals.map((signal) => (
+                <div
+                  key={signal.key}
+                  className="border border-line bg-bg-elevated/70 px-3.5 py-3.5"
+                >
+                  <dt className="label text-[10px] text-ink-muted">
+                    {signal.key}
+                  </dt>
+                  <dd className="mt-2 text-[13px] font-semibold text-ink">
+                    {signal.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="animate-rise animate-rise-delay-4 mt-11 flex flex-wrap gap-3">
               <a
-                href={`mailto:${profile.email}`}
-                className="bg-ink px-5 py-3 text-sm font-medium text-bg transition-opacity hover:opacity-90"
+                href="#contact"
+                className="bg-accent px-5 py-3 text-[13px] font-semibold text-bg transition-opacity hover:opacity-90"
               >
-                Me contacter
+                Lancer un projet
               </a>
               <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-ink/20 bg-bg-elevated/70 px-5 py-3 text-sm font-medium text-ink transition-colors hover:border-ink"
+                href="#expertises"
+                className="border border-ink/25 px-5 py-3 text-[13px] font-medium text-ink transition-colors hover:border-accent hover:text-accent"
               >
-                LinkedIn
-              </a>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-ink/20 bg-bg-elevated/70 px-5 py-3 text-sm font-medium text-ink transition-colors hover:border-ink"
-              >
-                GitHub
+                Voir les expertises
               </a>
             </div>
           </div>
         </section>
 
         <section
-          id="experience"
-          className="mx-auto max-w-6xl border-b border-line px-6 py-20 md:py-28"
+          id="profil"
+          className="mx-auto max-w-5xl px-6 py-20 md:px-10 md:py-24"
         >
-          <div className="mb-12 max-w-2xl">
-            <h2 className="font-[family-name:var(--font-syne)] text-3xl font-semibold tracking-tight md:text-4xl">
-              Expérience
-            </h2>
-            <p className="mt-3 text-ink-muted">
-              Parcours en entreprise, de l’alternance à l’ingénierie logicielle.
-            </p>
-          </div>
+          <SectionLabel index="01" title="Profil" />
 
-          <ol className="space-y-10">
-            {experiences.map((job) => (
-              <li
-                key={`${job.company}-${job.role}-${job.period}`}
-                className="grid gap-4 border-t border-line pt-10 md:grid-cols-[minmax(0,220px)_1fr]"
-              >
-                <div className="text-sm text-ink-muted">
-                  <p>{job.period}</p>
-                  <p className="mt-1">{job.location}</p>
-                </div>
-                <div>
-                  <h3 className="font-[family-name:var(--font-syne)] text-xl font-semibold">
-                    {job.role}
-                  </h3>
-                  <p className="mt-1 text-accent">{job.company}</p>
-                  <ul className="mt-4 space-y-2 text-ink-muted">
-                    {job.bullets.map((bullet) => (
-                      <li key={bullet} className="leading-relaxed">
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section
-          id="formation"
-          className="mx-auto max-w-6xl border-b border-line px-6 py-20 md:py-28"
-        >
-          <div className="mb-12 max-w-2xl">
-            <h2 className="font-[family-name:var(--font-syne)] text-3xl font-semibold tracking-tight md:text-4xl">
-              Formation
-            </h2>
-            <p className="mt-3 text-ink-muted">
-              Du DUT au Master Cloud, un parcours informatique progressif.
-            </p>
-          </div>
-
-          <ul className="space-y-8">
-            {education.map((item) => (
-              <li
-                key={item.degree}
-                className="grid gap-2 border-t border-line pt-8 md:grid-cols-[minmax(0,220px)_1fr]"
-              >
-                <p className="text-sm text-ink-muted">{item.period}</p>
-                <div>
-                  <h3 className="font-[family-name:var(--font-syne)] text-xl font-semibold">
-                    {item.degree}
-                  </h3>
-                  <p className="mt-1 text-ink-muted">
-                    {item.school} · {item.location}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section
-          id="projets"
-          className="mx-auto max-w-6xl border-b border-line px-6 py-20 md:py-28"
-        >
-          <div className="mb-12 max-w-2xl">
-            <h2 className="font-[family-name:var(--font-syne)] text-3xl font-semibold tracking-tight md:text-4xl">
-              Projets
-            </h2>
-            <p className="mt-3 text-ink-muted">
-              Sélection de projets personnels et académiques.
-            </p>
-          </div>
-
-          <ul className="grid gap-8 md:grid-cols-3">
-            {projects.map((project) => (
-              <li key={project.name} className="border-t border-line pt-6">
-                <h3 className="font-[family-name:var(--font-syne)] text-xl font-semibold">
-                  {"href" in project && project.href ? (
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition-colors hover:text-accent"
-                    >
-                      {project.name}
-                    </a>
-                  ) : (
-                    project.name
-                  )}
+          <div className="mt-12 space-y-11">
+            {aboutBlocks.map((block) => (
+              <div key={block.title} className="max-w-2xl">
+                <h3 className="text-[15px] font-semibold tracking-tight text-ink">
+                  {block.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                  {project.description}
+                <p className="mt-3 text-[16px] leading-relaxed text-ink-muted">
+                  {block.body}
                 </p>
-                <p className="mt-4 text-xs uppercase tracking-wide text-ink-muted">
-                  {project.stack.join(" · ")}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="expertises"
+          className="mx-auto max-w-5xl border-t border-line px-6 py-20 md:px-10 md:py-24"
+        >
+          <SectionLabel index="02" title="Expertises" />
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-ink-muted">
+            Quatre leviers pour un delivery fiable.
+          </p>
+
+          <ul className="mt-12 grid gap-0 sm:grid-cols-2">
+            {focusAreas.map((area, index) => (
+              <li
+                key={area.id}
+                className={`border-t border-line py-9 sm:pr-10 ${
+                  index % 2 === 1 ? "sm:border-l sm:pl-10 sm:pr-0" : ""
+                }`}
+              >
+                <p className="label text-accent">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="display mt-4 text-[1.45rem] font-medium tracking-tight text-ink">
+                  {area.label}
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
+                  {area.body}
                 </p>
               </li>
             ))}
@@ -185,31 +138,24 @@ export default function Home() {
 
         <section
           id="competences"
-          className="mx-auto max-w-6xl border-b border-line px-6 py-20 md:py-28"
+          className="mx-auto max-w-5xl border-t border-line px-6 py-20 md:px-10 md:py-24"
         >
-          <div className="mb-12 max-w-2xl">
-            <h2 className="font-[family-name:var(--font-syne)] text-3xl font-semibold tracking-tight md:text-4xl">
-              Compétences
-            </h2>
-            <p className="mt-3 text-ink-muted">
-              Stack utilisée en entreprise et sur des projets perso.
-            </p>
-          </div>
+          <SectionLabel index="03" title="Compétences" />
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-10 sm:grid-cols-2">
             {(
               [
-                ["Langages", skills.langages],
-                ["Frontend", skills.frontend],
-                ["Backend", skills.backend],
-                ["Cloud & data", skills.cloudData],
+                ["Web", skills.web],
+                ["Backend & data", skills.backend],
+                ["Cloud & infra", skills.cloudInfra],
+                ["Pilotage", skills.delivery],
               ] as const
             ).map(([label, items]) => (
-              <div key={label} className="border-t border-line pt-6">
-                <h3 className="text-sm font-medium uppercase tracking-wide text-accent">
+              <div key={label}>
+                <h3 className="text-[14px] font-semibold tracking-tight text-ink">
                   {label}
                 </h3>
-                <ul className="mt-4 space-y-2 text-ink-muted">
+                <ul className="mt-4 space-y-2 text-[14px] text-ink-muted">
                   {items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
@@ -218,14 +164,24 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-14 border-t border-line pt-8">
-            <h3 className="text-sm font-medium uppercase tracking-wide text-accent">
+          <div className="mt-12 border border-accent/25 bg-accent-dim px-5 py-5">
+            <p className="label text-accent">Engagement</p>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink">
+              Code propre, infra reproductible, communication claire — pour que
+              ton produit reste fiable après la mise en ligne.
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <h3 className="text-[14px] font-semibold tracking-tight text-ink">
               Langues
             </h3>
-            <ul className="mt-4 flex flex-wrap gap-x-10 gap-y-2 text-ink-muted">
+            <ul className="mt-4 space-y-2 text-[14px] text-ink-muted">
               {languages.map((lang) => (
                 <li key={lang.name}>
-                  <span className="text-ink">{lang.name}</span> — {lang.level}
+                  <span className="font-medium text-ink">{lang.name}</span>
+                  {" — "}
+                  {lang.level}
                 </li>
               ))}
             </ul>
@@ -234,55 +190,66 @@ export default function Home() {
 
         <section
           id="contact"
-          className="mx-auto max-w-6xl px-6 py-20 md:py-28"
+          className="mx-auto max-w-5xl border-t border-line px-6 py-20 md:px-10 md:py-24"
         >
-          <div className="max-w-2xl">
-            <h2 className="font-[family-name:var(--font-syne)] text-3xl font-semibold tracking-tight md:text-4xl">
-              Contact
-            </h2>
-            <p className="mt-3 text-ink-muted">
-              Ouvert aux échanges autour de projets logiciel, cloud et produit.
-            </p>
-            <div className="mt-8 space-y-3 text-lg">
-              <p>
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-accent"
-                >
-                  {profile.email}
-                </a>
-              </p>
-              <p>
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-accent"
-                >
-                  LinkedIn
-                </a>
-                {" · "}
-                <a
-                  href={profile.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-accent"
-                >
-                  GitHub
-                </a>
-              </p>
-              <p className="text-ink-muted">{profile.location}</p>
-            </div>
-          </div>
+          <SectionLabel index="04" title="Contact" />
+          <p className="mt-5 max-w-xl text-[18px] leading-relaxed text-ink">
+            Tu as un projet web, cloud ou infra à cadrer ?
+            <br />
+            <span className="text-ink-muted">Partons sur une base solide.</span>
+          </p>
+
+          <ul className="mt-10 space-y-4 text-[15px]">
+            <li>
+              <span className="text-ink-muted">Email</span>
+              <br />
+              <a
+                href={`mailto:${profile.email}`}
+                className="font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              >
+                {profile.email}
+              </a>
+            </li>
+            <li>
+              <span className="text-ink-muted">GitHub</span>
+              <br />
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              >
+                github.com/rdmozk
+              </a>
+            </li>
+            <li>
+              <span className="text-ink-muted">LinkedIn</span>
+              <br />
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              >
+                linkedin.com/in/erdem-ozkorkmaz
+              </a>
+            </li>
+            <li>
+              <span className="text-ink-muted">Base</span>
+              <br />
+              <span className="font-medium text-ink">{profile.location}</span>
+            </li>
+          </ul>
         </section>
       </main>
 
-      <footer className="no-print border-t border-line px-6 py-8 text-sm text-ink-muted">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © 2026 {profile.name}
+      <footer className="no-print border-t border-line px-6 py-7 text-[13px] text-ink-muted md:px-10">
+        <div className="mx-auto flex max-w-5xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 {profile.name}</p>
+          <p className="flex items-center gap-2">
+            <span className="status-dot" aria-hidden />
+            Fiabilité d’abord
           </p>
-          <p>CV & portfolio — construit avec Next.js</p>
         </div>
       </footer>
     </div>

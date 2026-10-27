@@ -2,102 +2,77 @@ export const profile = {
   name: "Erdem Ozkorkmaz",
   title: "Ingénieur logiciel",
   location: "Paris, France",
-  email: "erdem.ozkorkmaz@epitech.eu",
+  email: "ozkorkmaze@gmail.com",
   linkedin: "https://www.linkedin.com/in/erdem-ozkorkmaz-879934193",
   github: "https://github.com/rdmozk",
+  heroClaim: "Des systèmes qui tiennent.",
+  heroLine: "Web · Cloud · Infrastructure as Code · Pilotage",
   summary:
-    "Ingénieur logiciel basé à Paris. Parcours cloud & développement full-stack, formé à Epitech, en poste chez Equans après une alternance de plus de deux ans.",
+    "Je conçois des solutions logicielles faites pour la production : stables, lisibles, industrialisées. Moins de surprises, plus de delivery.",
 };
 
-export const experiences = [
+export const reliabilitySignals = [
+  { key: "Statut", value: "Production-ready" },
+  { key: "Priorité", value: "Fiabilité" },
+  { key: "Delivery", value: "Cadré & suivi" },
+  { key: "Stack", value: "Web · Cloud · IaC" },
+] as const;
+
+export const aboutBlocks = [
   {
-    role: "Ingénieur logiciel",
-    company: "Equans France",
-    location: "Paris",
-    period: "Oct. 2025 — Aujourd’hui",
-    bullets: [
-      "Développement et évolution d’applications logicielles dans un contexte multi-technique énergie & digital.",
-      "Collaboration avec les équipes produit et métier pour livrer des solutions robustes et maintenables.",
-    ],
+    title: "Qui je suis",
+    body: "Ingénieur logiciel à Paris. Je construis et fais évoluer des produits web et cloud avec une obsession : que ça tienne une fois en prod.",
   },
   {
-    role: "Apprenti ingénieur logiciel",
-    company: "EQUANS",
-    location: "Paris",
-    period: "Jan. 2023 — Juil. 2025",
-    bullets: [
-      "Alternance ingénierie logicielle au sein d’Equans, en parallèle du Master Epitech (spécialité Cloud).",
-      "Participation au cycle de vie logiciel : conception, développement, intégration et suivi.",
-    ],
+    title: "Ce que je fais",
+    body: "Développement web, cloud, Infrastructure as Code, Git et CI/CD. Je cadre aussi le besoin client, les priorités et le planning jusqu’à la livraison.",
   },
   {
-    role: "Développeur informatique",
-    company: "ENGIE Solutions France",
-    location: "France",
-    period: "Juin 2020 — Août 2020",
-    bullets: [
-      "Élaboration d’une base de données avec une interface sous Symfony.",
-    ],
-  },
-  {
-    role: "Stagiaire en développement web",
-    company: "ENGIE Solutions France",
-    location: "France",
-    period: "Mars 2020 — Mai 2020",
-    bullets: [
-      "Élaboration d’une base de données avec une interface sous Symfony.",
-    ],
+    title: "Mon approche",
+    body: "Clarté avant la complexité. Automatiser ce qui casse. Documenter ce qui compte. Livrer ce qui est attendu — dans les délais.",
   },
 ] as const;
 
-export const education = [
+export const focusAreas = [
   {
-    degree: "Master en informatique — Spécialité Cloud",
-    school: "Epitech",
-    location: "Le Kremlin-Bicêtre",
-    period: "2022 — 2025",
+    id: "web",
+    label: "Développement web",
+    body: "Applications et APIs solides, stack TypeScript / React / Node, qualité de code et expérience utilisateur.",
   },
   {
-    degree: "Licence Informatique",
-    school: "Université Sorbonne Paris Nord",
-    location: "Villetaneuse",
-    period: "2021",
+    id: "cloud",
+    label: "Cloud",
+    body: "Architectures cloud, services managés, déploiement et exploitation d’applications en environnement professionnel.",
   },
   {
-    degree: "DUT Informatique",
-    school: "Université de Reims Champagne-Ardenne",
-    location: "Reims",
-    period: "2018 — 2020",
-  },
-] as const;
-
-export const projects = [
-  {
-    name: "Deux fois",
-    description:
-      "Journal de souvenirs privé pour couple — Next.js, auth JWT, Neon/Drizzle, Vercel Blob.",
-    stack: ["Next.js", "TypeScript", "Neon", "Vercel"],
-    href: "https://github.com/rdmozk/deux-fois",
+    id: "iac",
+    label: "Infrastructure as Code",
+    body: "Environnements reproductibles, Docker, CI/CD, réduction du risque opérationnel par l’automatisation.",
   },
   {
-    name: "Pomodoro SaaS",
-    description:
-      "Application SaaS de gestion du temps (méthode Pomodoro) avec stats style Strava.",
-    stack: ["Angular", "Express", "PostgreSQL", "Docker"],
-  },
-  {
-    name: "Hemicycle",
-    description:
-      "Projet full-stack avec backend, frontend et mise en docker.",
-    stack: ["Full-stack", "Docker"],
+    id: "pm",
+    label: "Pilotage de projet",
+    body: "Cadrage du besoin, priorisation, planning réaliste et suivi du delivery avec les parties prenantes.",
   },
 ] as const;
 
 export const skills = {
-  langages: ["TypeScript", "JavaScript", "PHP", "SQL"],
-  frontend: ["React", "Next.js", "Angular", "Tailwind CSS"],
-  backend: ["Node.js", "Express", "Symfony", "REST APIs"],
-  cloudData: ["Cloud (spé. Epitech)", "PostgreSQL", "Docker", "Vercel"],
+  web: ["TypeScript", "JavaScript", "React", "Next.js", "Angular", "PHP", "Symfony"],
+  backend: ["Node.js", "Express", "APIs REST", "PostgreSQL", "SQL"],
+  cloudInfra: [
+    "Cloud",
+    "Infrastructure as Code",
+    "Docker",
+    "CI / CD",
+    "Git",
+    "Genetec",
+  ],
+  delivery: [
+    "Cadrage besoin client",
+    "Priorisation",
+    "Planning",
+    "Suivi de delivery",
+  ],
 } as const;
 
 export const languages = [

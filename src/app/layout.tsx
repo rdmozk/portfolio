@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
-import { Figtree, Syne } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const fraunces = Fraunces({
+  variable: "--font-display",
   subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
-const syne = Syne({
-  variable: "--font-syne",
+const manrope = Manrope({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Erdem Ozkorkmaz — Ingénieur logiciel",
+  title: "Erdem Ozkorkmaz — Des systèmes qui tiennent",
   description:
-    "CV et portfolio d’Erdem Ozkorkmaz, ingénieur logiciel à Paris — Equans, Epitech Cloud.",
+    "Ingénieur logiciel à Paris. Web, cloud, Infrastructure as Code et pilotage — fiabilité d’abord.",
   openGraph: {
-    title: "Erdem Ozkorkmaz — Ingénieur logiciel",
+    title: "Erdem Ozkorkmaz — Des systèmes qui tiennent",
     description:
-      "CV et portfolio d’Erdem Ozkorkmaz, ingénieur logiciel à Paris.",
+      "Web, cloud, IaC et pilotage de projet. Des solutions faites pour la production.",
     locale: "fr_FR",
     type: "website",
   },
@@ -29,9 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${figtree.variable} ${syne.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full font-sans text-ink">{children}</body>
+      <body className="min-h-full bg-bg font-sans text-ink">{children}</body>
     </html>
   );
 }
