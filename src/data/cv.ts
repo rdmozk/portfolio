@@ -1,114 +1,80 @@
 export const profile = {
   name: "Erdem Ozkorkmaz",
-  title: "Ingénieur logiciel",
-  location: "Paris, Île-de-France",
-  email: "erdem.ozkorkmaz@epitech.eu",
+  title: "Développeur full-stack",
+  location: "Paris · Disponible sur Malt",
+  email: "ozkorkmaze@gmail.com",
   linkedin: "https://www.linkedin.com/in/erdem-ozkorkmaz-879934193",
   github: "https://github.com/rdmozk",
   summary:
-    "Ingénieur logiciel à Equans, formé à Epitech (spécialité Cloud). Développement web, APIs, cloud et mise en production — du cadrage à la livraison.",
+    "Je conçois et livre des applications web, des APIs et des déploiements cloud. Je prends en charge le cadrage, le développement et la mise en production.",
 };
 
-export const experience = [
+export const services = [
   {
-    role: "Ingénieur logiciel",
-    company: "Equans France",
-    location: "Paris",
-    start: "Oct. 2025",
-    end: "Aujourd’hui",
-    bullets: [
-      "Développement et évolution d’applications logicielles au sein d’Equans France.",
-      "Collaboration avec les équipes techniques sur des sujets web, cloud et industrialisation.",
-    ],
+    title: "Applications web",
+    description:
+      "Interfaces React / Next.js, parcours utilisateurs, dashboards et back-offices.",
   },
   {
-    role: "Apprenti ingénieur logiciel",
-    company: "EQUANS",
-    location: "Paris",
-    start: "Jan. 2023",
-    end: "Juil. 2025",
-    bullets: [
-      "Alternance ingénierie logicielle (2 ans et demi) en environnement multi-technique.",
-      "Contribution au développement, à la maintenance et à l’amélioration continue des solutions internes.",
-    ],
+    title: "APIs & backend",
+    description:
+      "APIs REST, authentification, bases de données PostgreSQL / SQL, intégrations.",
   },
   {
-    role: "Développeur informatique",
-    company: "ENGIE Solutions France",
-    location: "France",
-    start: "Juin 2020",
-    end: "Août 2020",
-    bullets: [
-      "Élaboration d’une base de données avec une interface sous Symfony.",
-    ],
+    title: "Cloud & déploiement",
+    description:
+      "Docker, CI/CD, mise en ligne et industrialisation des environnements.",
   },
   {
-    role: "Stagiaire en développement web",
-    company: "ENGIE Solutions France",
-    location: "France",
-    start: "Mars 2020",
-    end: "Mai 2020",
-    bullets: [
-      "Élaboration d’une base de données avec une interface sous Symfony.",
-    ],
-  },
-] as const;
-
-export const education = [
-  {
-    degree: "Master en informatique — spécialité Cloud",
-    school: "Epitech",
-    location: "Le Kremlin-Bicêtre",
-    start: "2022",
-    end: "2025",
-  },
-  {
-    degree: "Licence Informatique",
-    school: "Université Sorbonne Paris Nord",
-    location: "Villetaneuse",
-    start: "2021",
-    end: "2022",
-  },
-  {
-    degree: "DUT Informatique",
-    school: "Université de Reims Champagne-Ardenne",
-    location: "Reims",
-    start: "2018",
-    end: "2020",
+    title: "Pilotage",
+    description:
+      "Priorisation, planning et suivi jusqu’à la livraison, en lien avec votre métier.",
   },
 ] as const;
 
 export const projects = [
   {
-    name: "Pomodoro",
-    description: "Application web de gestion du temps et de suivi de sessions.",
+    name: "Pomodoro SaaS",
+    description:
+      "Application de productivité : sessions chronométrées, historique, statistiques et connexion OAuth (Google / GitHub).",
+    stack: ["Angular", "Express", "PostgreSQL", "Docker"],
   },
   {
-    name: "Dashboard",
-    description: "Tableau de bord avec visualisations et indicateurs.",
+    name: "Hemicycle",
+    description:
+      "Plateforme full-stack avec frontend, API backend et déploiement containerisé.",
+    stack: ["TypeScript", "Node.js", "Docker"],
   },
   {
-    name: "API REST",
-    description: "Backend avec authentification et CRUD.",
+    name: "Racing Dashboard",
+    description:
+      "Tableau de bord de suivi de performances avec graphiques et indicateurs temps réel.",
+    stack: ["React", "TypeScript", "Charts"],
   },
   {
-    name: "E-commerce",
-    description: "Parcours catalogue, panier et commandes.",
+    name: "Cookbook",
+    description:
+      "Application web de gestion de recettes : catalogue, fiches détaillées et organisation des contenus.",
+    stack: ["React", "TypeScript"],
   },
   {
-    name: "Blog",
-    description: "Site de contenu avec édition et publication d’articles.",
+    name: "Clinique — front-end",
+    description:
+      "Interface web pour un parcours clinique : navigation, formulaires et écrans métier.",
+    stack: ["React", "Vite", "TypeScript"],
   },
   {
-    name: "Réservation",
-    description: "Interface de prise de rendez-vous en ligne.",
+    name: "API e-commerce",
+    description:
+      "Backend e-commerce : catalogue produits, commandes, rôles utilisateurs et paiement Stripe.",
+    stack: ["Node.js", "MongoDB", "Stripe"],
   },
 ] as const;
 
 export const skills = {
-  web: ["TypeScript", "JavaScript", "React", "Next.js", "Angular", "PHP", "Symfony"],
-  backend: ["Node.js", "Express", "APIs REST", "PostgreSQL", "SQL"],
-  cloudInfra: ["Cloud", "Docker", "CI/CD", "Git", "Vercel"],
+  frontend: ["TypeScript", "JavaScript", "React", "Next.js", "Angular", "Tailwind CSS"],
+  backend: ["Node.js", "Express", "PHP", "Symfony", "APIs REST", "PostgreSQL"],
+  devops: ["Docker", "CI/CD", "Git", "Cloud", "Vercel"],
 } as const;
 
 export const languages = [

@@ -1,10 +1,9 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import {
-  education,
-  experience,
   languages,
   profile,
   projects,
+  services,
   skills,
 } from "@/data/cv";
 
@@ -12,25 +11,24 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="top" className="relative z-10 mx-auto w-full max-w-5xl flex-1 px-6 pb-24">
-        {/* Hero */}
-        <section className="flex min-h-[72vh] flex-col justify-center gap-8 py-16 sm:py-24">
-          <p className="animate-rise text-[13px] uppercase tracking-[0.22em] text-accent">
+      <main id="top" className="mx-auto w-full max-w-5xl flex-1 px-6 pb-24">
+        <section className="border-b border-line py-16 sm:py-24">
+          <p className="text-[13px] font-medium text-accent">
             {profile.location}
           </p>
-          <h1 className="animate-rise-delay-1 font-[family-name:var(--font-display)] text-[clamp(2.75rem,8vw,5.5rem)] font-medium leading-[0.95] tracking-tight text-ink">
+          <h1 className="display mt-4 text-[clamp(2.5rem,6vw,4rem)] font-semibold leading-[1.08] text-ink">
             {profile.name}
           </h1>
-          <p className="animate-rise-delay-2 max-w-xl text-xl text-ink-muted sm:text-2xl">
+          <p className="mt-3 text-xl font-medium text-ink sm:text-2xl">
             {profile.title}
           </p>
-          <p className="animate-rise-delay-3 max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
+          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-muted">
             {profile.summary}
           </p>
-          <div className="animate-rise-delay-3 no-print flex flex-wrap gap-3 pt-2">
+          <div className="no-print mt-8 flex flex-wrap gap-3">
             <a
-              href="#contact"
-              className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-bg transition hover:brightness-110"
+              href={`mailto:${profile.email}`}
+              className="bg-accent px-5 py-3 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
             >
               Me contacter
             </a>
@@ -38,7 +36,7 @@ export default function Home() {
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-line px-5 py-2.5 text-sm text-ink-muted transition hover:border-accent hover:text-accent"
+              className="border border-line bg-bg-elevated px-5 py-3 text-[14px] font-medium text-ink transition-colors hover:border-ink/30"
             >
               LinkedIn
             </a>
@@ -46,131 +44,118 @@ export default function Home() {
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-line px-5 py-2.5 text-sm text-ink-muted transition hover:border-accent hover:text-accent"
+              className="border border-line bg-bg-elevated px-5 py-3 text-[14px] font-medium text-ink transition-colors hover:border-ink/30"
             >
               GitHub
             </a>
           </div>
         </section>
 
-        {/* Experience */}
-        <Section id="experience" title="Expérience">
-          <ol className="space-y-10">
-            {experience.map((job) => (
-              <li key={`${job.company}-${job.role}-${job.start}`} className="grid gap-3 sm:grid-cols-[9rem_1fr]">
-                <p className="text-sm text-ink-muted">
-                  {job.start} — {job.end}
-                </p>
-                <div>
-                  <h3 className="text-lg font-medium text-ink">{job.role}</h3>
-                  <p className="text-accent">
-                    {job.company}
-                    <span className="text-ink-muted"> · {job.location}</span>
-                  </p>
-                  <ul className="mt-3 space-y-1.5 text-[15px] leading-relaxed text-ink-muted">
-                    {job.bullets.map((bullet) => (
-                      <li key={bullet} className="flex gap-2">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Section>
-
-        {/* Education */}
-        <Section id="formation" title="Formation">
-          <ol className="space-y-8">
-            {education.map((edu) => (
-              <li key={edu.school + edu.degree} className="grid gap-2 sm:grid-cols-[9rem_1fr]">
-                <p className="text-sm text-ink-muted">
-                  {edu.start} — {edu.end}
-                </p>
-                <div>
-                  <h3 className="text-lg font-medium text-ink">{edu.degree}</h3>
-                  <p className="text-ink-muted">
-                    {edu.school} · {edu.location}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Section>
-
-        {/* Projects */}
-        <Section id="projets" title="Projets">
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+        <Section id="services" title="Ce que je propose">
+          <ul className="grid gap-0 sm:grid-cols-2">
+            {services.map((service, index) => (
               <li
-                key={project.name}
-                className="rounded-2xl border border-line bg-bg-elevated/60 p-5 transition hover:border-accent/40"
+                key={service.title}
+                className={`border-t border-line py-8 sm:pr-8 ${
+                  index % 2 === 1 ? "sm:border-l sm:pl-8 sm:pr-0" : ""
+                }`}
               >
-                <h3 className="font-[family-name:var(--font-display)] text-xl text-ink">
-                  {project.name}
+                <h3 className="text-[17px] font-semibold text-ink">
+                  {service.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                  {project.description}
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-muted">
+                  {service.description}
                 </p>
               </li>
             ))}
           </ul>
         </Section>
 
-        {/* Skills */}
+        <Section id="projets" title="Réalisations">
+          <ul className="space-y-0">
+            {projects.map((project) => (
+              <li
+                key={project.name}
+                className="grid gap-2 border-t border-line py-8 sm:grid-cols-[minmax(0,220px)_1fr] sm:gap-8"
+              >
+                <h3 className="display text-[20px] font-medium text-ink">
+                  {project.name}
+                </h3>
+                <div>
+                  <p className="text-[15px] leading-relaxed text-ink-muted">
+                    {project.description}
+                  </p>
+                  <p className="mt-3 text-[12px] font-medium tracking-wide text-ink/55">
+                    {project.stack.join(" · ")}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
         <Section id="competences" title="Compétences">
-          <div className="grid gap-8 sm:grid-cols-3">
-            <SkillGroup title="Web" items={[...skills.web]} />
+          <div className="grid gap-10 sm:grid-cols-3">
+            <SkillGroup title="Frontend" items={[...skills.frontend]} />
             <SkillGroup title="Backend" items={[...skills.backend]} />
-            <SkillGroup title="Cloud & outils" items={[...skills.cloudInfra]} />
+            <SkillGroup title="DevOps & cloud" items={[...skills.devops]} />
           </div>
-          <div className="mt-10">
-            <h3 className="mb-3 text-sm uppercase tracking-[0.16em] text-ink-muted">
+          <div className="mt-10 border-t border-line pt-8">
+            <h3 className="text-[13px] font-medium uppercase tracking-[0.12em] text-ink-muted">
               Langues
             </h3>
-            <ul className="flex flex-wrap gap-4 text-[15px]">
+            <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2 text-[15px] text-ink-muted">
               {languages.map((lang) => (
-                <li key={lang.name} className="text-ink">
-                  {lang.name}
-                  <span className="text-ink-muted"> — {lang.level}</span>
+                <li key={lang.name}>
+                  <span className="font-medium text-ink">{lang.name}</span>
+                  {" — "}
+                  {lang.level}
                 </li>
               ))}
             </ul>
           </div>
         </Section>
 
-        {/* Contact */}
         <Section id="contact" title="Contact">
-          <div className="flex flex-col gap-3 text-[15px] sm:flex-row sm:flex-wrap sm:gap-8">
-            <a
-              href={`mailto:${profile.email}`}
-              className="text-ink transition hover:text-accent"
-            >
-              {profile.email}
-            </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink-muted transition hover:text-accent"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink-muted transition hover:text-accent"
-            >
-              GitHub
-            </a>
-          </div>
+          <p className="max-w-xl text-[16px] leading-relaxed text-ink-muted">
+            Vous avez un besoin en développement web, API ou cloud ? Écrivons
+            pour cadrer la mission.
+          </p>
+          <ul className="mt-8 space-y-3 text-[16px]">
+            <li>
+              <a
+                href={`mailto:${profile.email}`}
+                className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-accent"
+              >
+                {profile.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink-muted underline decoration-line underline-offset-4 hover:text-ink hover:decoration-accent"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink-muted underline decoration-line underline-offset-4 hover:text-ink hover:decoration-accent"
+              >
+                GitHub
+              </a>
+            </li>
+          </ul>
         </Section>
       </main>
-      <footer className="no-print relative z-10 border-t border-line py-8 text-center text-sm text-ink-muted">
-        © 2026 {profile.name}
+
+      <footer className="no-print border-t border-line py-7 text-center text-[13px] text-ink-muted">
+        © 2026 {profile.name} · Portfolio Malt
       </footer>
     </>
   );
@@ -186,8 +171,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 border-t border-line py-16">
-      <h2 className="mb-10 font-[family-name:var(--font-display)] text-3xl tracking-tight text-ink sm:text-4xl">
+    <section id={id} className="scroll-mt-24 border-b border-line py-16 last:border-b-0">
+      <h2 className="display mb-10 text-[1.85rem] font-semibold tracking-tight text-ink sm:text-[2.1rem]">
         {title}
       </h2>
       {children}
@@ -198,17 +183,12 @@ function Section({
 function SkillGroup({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h3 className="mb-3 text-sm uppercase tracking-[0.16em] text-ink-muted">
+      <h3 className="text-[13px] font-medium uppercase tracking-[0.12em] text-ink-muted">
         {title}
       </h3>
-      <ul className="flex flex-wrap gap-2">
+      <ul className="mt-3 space-y-1.5 text-[15px] text-ink">
         {items.map((item) => (
-          <li
-            key={item}
-            className="rounded-full border border-line px-3 py-1 text-sm text-ink"
-          >
-            {item}
-          </li>
+          <li key={item}>{item}</li>
         ))}
       </ul>
     </div>

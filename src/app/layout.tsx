@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Fraunces, Outfit } from "next/font/google";
+import { Libre_Franklin, Source_Serif_4 } from "next/font/google";
 import { profile } from "@/data/cv";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Source_Serif_4({
   variable: "--font-display",
   subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
+  weight: ["500", "600"],
 });
 
-const body = Outfit({
+const body = Libre_Franklin({
   variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: `${profile.name} — ${profile.title}`,
+  title: `${profile.name} — ${profile.title} | Malt`,
   description: profile.summary,
 };
 
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="fr"
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-atmosphere">{children}</body>
+      <body className="flex min-h-full flex-col bg-bg font-sans text-ink">
+        {children}
+      </body>
     </html>
   );
 }
