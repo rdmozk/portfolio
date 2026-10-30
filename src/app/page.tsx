@@ -114,16 +114,6 @@ export default function Home() {
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                   {project.description}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full bg-accent-soft px-2.5 py-0.5 text-[11px] text-accent"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
               </li>
             ))}
           </ul>

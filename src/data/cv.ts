@@ -80,22 +80,28 @@ export const education = [
 
 export const projects = [
   {
-    name: "Deux fois",
-    description:
-      "Journal de souvenirs privé pour couple — Next.js, Neon, Drizzle, Vercel Blob, auth JWT.",
-    stack: ["Next.js", "TypeScript", "Neon", "Vercel"],
+    name: "Pomodoro",
+    description: "Application web de gestion du temps et de suivi de sessions.",
   },
   {
-    name: "Pomodoro SaaS",
-    description:
-      "App de productivité type Pomodoro avec stats (style Strava), OAuth et Docker.",
-    stack: ["Angular", "Express", "PostgreSQL", "Docker"],
+    name: "Dashboard",
+    description: "Tableau de bord avec visualisations et indicateurs.",
   },
   {
-    name: "Hemicycle",
-    description:
-      "Plateforme full-stack avec frontend et backend, features sociales et design system.",
-    stack: ["Full-stack", "Docker"],
+    name: "API REST",
+    description: "Backend avec authentification et CRUD.",
+  },
+  {
+    name: "E-commerce",
+    description: "Parcours catalogue, panier et commandes.",
+  },
+  {
+    name: "Blog",
+    description: "Site de contenu avec édition et publication d’articles.",
+  },
+  {
+    name: "Réservation",
+    description: "Interface de prise de rendez-vous en ligne.",
   },
 ] as const;
 
